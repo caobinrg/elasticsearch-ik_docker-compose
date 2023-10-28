@@ -1,9 +1,9 @@
 version: '2.2'
 services:
   es-node01:
-    build: ./es
+    build: ./es/es7
     # image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
-    container_name: es01
+    container_name: es01-es7
     ports:
       - "9200:9200"
     environment:
@@ -13,8 +13,8 @@ services:
       - cluster.initial_master_nodes=es01
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
-      - ./es/es01/data:/usr/share/elasticsearch/data:rw
-      - ./es/es01/logs:/usr/share/elasticsearch/logs:rw
+      - ./es/es01-es7/data:/usr/share/elasticsearch/data:rw
+      - ./es/es01-es7/logs:/usr/share/elasticsearch/logs:rw
     networks:
       - elastic
 
@@ -26,8 +26,8 @@ services:
     ports:
       - 5601:5601
     environment:
-      ELASTICSEARCH_URL: http://es01:9200
-      ELASTICSEARCH_HOSTS: http://es01:9200
+      ELASTICSEARCH_URL: http://es01-es7:9200
+      ELASTICSEARCH_HOSTS: http://es01-es7:9200
     networks:
       - elastic
 

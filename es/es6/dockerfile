@@ -1,0 +1,10 @@
+FROM elasticsearch:6.8.23
+
+ENV VERSION=6.8.23
+
+# https://github.com/medcl/elasticsearch-analysis-ik/releases
+# ADD https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v${VERSION}/elasticsearch-analysis-ik-$VERSION.zip /tmp/
+COPY ./src/elasticsearch-analysis-ik-6.8.23.zip /tmp/
+RUN /usr/share/elasticsearch/bin/elasticsearch-plugin install -b file:///tmp/elasticsearch-analysis-ik-$VERSION.zip
+
+RUN rm -rf /tmp/*

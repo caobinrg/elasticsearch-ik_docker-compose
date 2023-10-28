@@ -26,16 +26,10 @@ enjoy it.
 
 **说明：**
 
-该构建版本为elasticsearch单节点，如有需要多节点，可提issues ，会以分支的形式解决。
-
-  
-
-需要注意 ./es/* 的用户权限
-
-  
 
 执行
 
 ```bash
+docker-compose -f docker-compose-es6.yml up -d
 docker-compose up -d
 ```
